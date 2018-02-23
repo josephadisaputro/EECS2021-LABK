@@ -1,0 +1,34 @@
+module labK;
+reg	[31:0] x; // x is a register with size of 32 bits
+
+reg	[31:0] one;	// one is a register with one bit of size
+reg	[2:0] two;	// 2 bits of size
+reg	[3:0] three;	// 3 bits of size
+
+initial 
+begin 
+
+	//$display($time, " ", x);	// what happened is that, it is outputing x within 0 seconds
+	//$display($time, " %b", x);	// this is way to display x in binary, it is actually exactlly the same thing 
+	//$display("time = %5d, x = %b", $time, x);
+	x = 32'hffff0000;		// this means, [size bits]'[base]value
+	//$display($time, " ", x);
+	//$display($time, " %b", x);
+	//$display("time = %5d, x = %b", $time, x);
+	//x = x + 2;
+	//$display($time, " ", x);
+	//$display($time, " %h", x);	// h for hexadecimal, to display decimal, just dont put any format or if u really want to, just use %d
+	//$display("time = %5d, x = %b", $time, x);
+
+	$display("time = %5d, x = %b", $time, x);
+	one = &x;		// and reduction
+	$display("time = %5d, one = %b", $time, one);
+	two = x[1:0];		// part-select
+	$display("time = %5d, two = %b", $time, two);
+	three = {one, two};	// concatenate
+	$display("time = %5d, three = %b", $time, three);
+
+	$finish;
+end
+
+endmodule

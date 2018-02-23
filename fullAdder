@@ -1,0 +1,19 @@
+module fullAdder;
+reg a, b, cin;
+wire upperRes, lowerRes, upperAnd, z, cout;
+
+xor my_xorHigh(upperRes, a, b);
+and my_andLow(lowerRes, a, b);
+xor my_xorHigh2(z, upperRes, cin);
+and my_andHigh(upperAnd, upperRes, cin);
+or  my_orLow(cout, lowerRes, upperAnd);
+
+initial
+begin
+
+	
+	#1 $display("a=%b b=%b cin=%b z=%b cout=%b", a, b, cin, z, cout);
+	$finish;
+end 
+endmodule
+
